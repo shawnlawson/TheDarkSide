@@ -40,7 +40,7 @@ prog
     .option('-s, --websocket <websocket>', 'Use websocket', prog.BOOL, 'true')
     .option('-k, --websocketport <websocketport>', 'Set websocket port', prog.INT, 8000)
     .option('-i, --tidal <tidal>', 'Use TidalCycles', prog.BOOL, true)
-    .option('-l, --tidalbootfile <tidalbootfile>', 'Set tidalcycles boot file', null, '.ghciSuperDirt')
+    .option('-l, --tidalbootfile <tidalbootfile>', 'Set tidalcycles boot file', null, 'ghciSuperDirt')
     .action(function (args, options, logger) {
         /*************************
         Info about Degugging status
@@ -57,7 +57,7 @@ prog
             //     debug.enable('firebase-server*');
             // }
 
-        FirebaseServer = require('./myFirebase.js')
+        FirebaseServer = require('./localFirebase.js')
 
         new FirebaseServer(options.fireport, options.firehost, {})
 
