@@ -1,0 +1,48 @@
+{
+  "name": "TheDarkSide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "shawn lawson",
+  "license": "ISC",
+  "files": [
+    "index.js",
+    "lib/*.js"
+  ],
+   "standard": {
+    "globals": [
+      "THREE",
+      "$"
+    ]
+  },
+  "devDependencies": {
+    "babel": "5.8.23",
+    "bluebird": "2.10.2",
+    "co": "4.6.0",
+    "coveralls": "2.11.4",
+    "eslint": "1.7.3",
+    "faye-websocket": "0.10.0",
+    "firebase": "3.6.1",
+    "firebase-token-generator": "^2.0.0",
+    "istanbul": "0.4.0",
+    "mocha": "2.3.3",
+    "proxyquire": "^1.7.3",
+    "winston": "^2.3.1"
+  },
+  "dependencies": {
+    "any-promise": "1.3.0",
+    "caporal": "^0.3.0",
+    "cli": "0.11.3",
+    "debug": "2.2.0",
+    "express": "^4.14.0",
+    "jwt-simple": "0.3.1",
+    "lodash": "3.10.1",
+    "nopt": "^3.0.6",
+    "targaryen": "2.0.0",
+    "uws": "^0.12.0",
+    "ws": "^1.1.1"
+  }
+}

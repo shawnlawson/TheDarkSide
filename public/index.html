@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>| | || ||| The Force ||| || | |</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/livewriting.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <!-- webGL ==================================== -->
+    <div id="container"></div>
+    <!-- editor ==================================== -->
+    <div id="editor"></div>
+    <div id="feedback"></div>
+    <!-- <div id="statusBar">ace rocks!</div> -->
+    <!-- audio ===================================== -->
+    <div id="audioPanel" title="Audio Input">
+        <div id="audioTabs" class="myTabs">
+            <ul>
+                <li><a href="#tabs-1">None</a></li>
+                <li><a href="#tabs-2">Mic/Line</a></li>
+                <li><a href="#tabs-3">File</a></li>
+                <li><a href="#tabs-4">SoundCloud</a></li>
+            </ul>
+            <div id="tabs-1">
+                <input type="submit" id="soundOffButton" value="all audio off" />
+            </div>
+            <div id="tabs-2">
+                <input type="submit" id="micToggleButton" value="start microphone/line in" />
+                <input type="checkbox" id="micTogglePlaythrough">
+                <label for="micTogglePlaythrough">playthrough</label>
+            </div>
+            <div id="tabs-3">
+                <input type="file" id="myAudioFile" accept="audio/*" />
+                <input type="checkbox" id="myAudioFileLoop" value="loop" />
+                <label for="myAudioFileLoop">loop</label>
+            </div>
+            <div id="tabs-4">
+                <div id="trackInfoPanel">
+                    <img id="infoImage" src="">
+                    <div id="infoArtist"></div>
+                    <div id="infoTrack"></div>
+                </div>
+                <div id="playerControls">
+                    <form id="form">
+                        <input id="input" placeholder="Paste Soundcloud URL here (https://soundcloud.com/artist/track)">
+                        <button type="submit" id="submit">load</button>
+                        <br>
+                    </form>
+                    <audio id="player" crossorigin="anonymous" controls="" autoplay="" preload autobuffer></audio>
+                </div>
+                <div id="messageBox">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- livewriting NAV ================================= -->
+    <div class='livewriting_navbar'>
+        <div class='livewriting_slider_wrapper'>
+            <div class='livewriting_slider'></div>
+        </div>
+        <div class="livewriting_toolbar_wrapper">
+            <div class="livewriting_navbar_buttons_left">
+                <button id="lw_toolbar_play" class="lw_toolbar_button">pause</button>
+                <button id="lw_toolbar_beginning" class="lw_toolbar_button">go to beginning</button>
+                <button id="lw_toolbar_end" class="lw_toolbar_button">go to end</button>
+            </div>
+            <div class="livewriting_navbar_buttons_right">
+                <div>
+                    <button id="lw_toolbar_stat" class="lw_toolbar_button">Show Histogram</button>
+                    <button id="lw_toolbar_skip" class="lw_toolbar_button">skip inactive parts</button>
+                    <button id="lw_toolbar_setting" class="lw_toolbar_button">settings</button>
+                    <button class="lw_toolbar_button livewriting_speed">1 X</button>
+                    <button class="lw_toolbar_button lw_toolbar_speed">adjust the speed</button>
+                    <div id="lw_playback_slider"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer UI ================================= -->
+    <div id="footer">
+        <div id="myFrameRate"></div>
+        <canvas id="fourBands" width="100" height="32"></canvas>
+        <div id="audioClock"></div>
+        <div id="footerUI">
+            <div id="selectQualityDIV" class="uiButton" title="Pixel Size">
+                <select id="selectQuality">
+                    <option value="0.0625">1/16</option>
+                    <option value="0.125">1/8</option>
+                    <option value="0.25">1/4</option>
+                    <option value="0.5" selected="selected">1/2</option>
+                    <option value="1">1</option>
+                    <option value="2">2x</option>
+                </select>
+            </div>
+            <div id="selectFontSizeDIV" class="uiButton" title="Text Size">
+                <select id="selectFontSize">
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="14" selected="selected">14</option>
+                    <option value="16">16</option>
+                    <option value="18">18</option>
+                    <option value="24">24</option>
+                    <option value="36">36</option>
+                </select>
+            </div>
+            <input type="submit" id="audioButton" value="" class="uiButton" title="Audio Input" />
+            <input type="checkbox" id="debug" value="" />
+            <label for="debug" class="uiButton" title="Toggle Debugging"></label>
+            <!-- <input type="submit" id="texturing" value="" class="uiButton" title="Texture Panel" />
+            <input type="submit" id="edges" value="" class="uiButton" title="Projection Mapping Panel" /> -->
+            <input type="file" id="mySettings" class="hide" />
+            <input type="submit" id="network" value="" class="uiButton" title="OSC Panel" />
+            <input type="submit" id="colorCorrectButton" value="" class="uiButton" title="Color Correction Panel" />
+            <input type="submit" id="openFile" value="" class="uiButton" title="Open Text Recording" />
+            <input type="file" id="myFile" class="hide" />
+            <input type="submit" id="saveFile" value="" class="uiButton" title="Save Text Recording" />
+            <!-- <input type="submit" id="saveImage" value="" class="uiButton" title="Save PNG" /> -->
+            <input type="checkbox" id="play" value="" />
+            <label for="play" class="uiButton" title="Toggle Rendering"></label>
+            <!-- <input type="submit" id="funcButton" value="" class="uiButton" title="Function Reference" /> -->
+            <!-- <input type="checkbox" id="myFullScreen" value="" />
+            <label for="myFullScreen" class="uiButton" title="Toggle Fullscreen"></label> -->
+            <input type="submit" id="playback" value="playback">playback</input>
+            <label for="playback" class="uiButton" title="Playback Recording"></label>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="lib/firebase.js"></script>
+<script type="text/javascript" src="lib/jquery.min.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.min.js"></script>
+<script type="text/javascript" src="lib/fpsmeter.js"></script>
+<script type="text/javascript" src="lib/three.js"></script>
+<script type="text/javascript" src="lib/Detector.js"></script>
+<script type="text/javascript" src="lib/ace/ace.js"></script>
+<script type="text/javascript" src="lib/ace/ext-language_tools.js"></script>
+<script type="text/javascript" src="lib/ace/ext-searchbox.js"></script>
+<script type="text/javascript" src="lib/ace/ext-statusbar.js"></script>
+<script type="text/javascript" src="lib/firepad.js"></script>
+<script type="text/javascript" src="lib/FileSaver.js"></script>
+<script type="text/javascript" src="js/myAudio.js"></script>
+<script type="text/javascript" src="js/livewriting.js"></script>
+<script type="text/javascript" src="js/myUI.js"></script>
+<script type="text/javascript" src="js/myOpenGL.js"></script>
+<script type="text/javascript" src="js/myAce.js"></script>
+<script type="text/javascript" src="js/myWebsocket.js"></script>
+<script type="text/javascript" src="js/myFirebase.js"></script>
+
+</html>
