@@ -205,23 +205,10 @@ $(document)
         setShaderFromEditor()
       })
 
-    $('#network')
-      .button()
-      .click(function (event) {
-        $('#oscPanel').dialog('open')
-      })
-
-    $('#colorCorrectButton')
-      .button()
-      .click(function (event) {
-        $('#colorCorrectPanel').dialog('open')
-      })
-
     $('#openFile')
         .button()
         .click(function (event) {   // to hide the other file button interface from users
           $('#myFile').trigger('click')
-          $('#playback').show()
         })
 
     $('#myFile')
@@ -244,11 +231,8 @@ $(document)
 
     $('#playback')
     .button()
-    .hide()
     .click(function () {
-      if ($('.livewriting_navbar').dialog('isOpen')) { $('livewriting_navbar').parent().css('visibility', 'visible') } else { $('.livewriting_navbar').dialog('open') }
-      // editor.livewriting('playJson', editor.livewriting('returnactiondata'))
-      $('.livewriting_navbar').show()
+      $('.livewriting_navbar').dialog('open')
     })
 
     $('.livewriting_navbar')
@@ -263,11 +247,6 @@ $(document)
       hide: {
         effect: 'clip',
         duration: 250
-      },
-      beforeClose: function (event, ui) {
-        $(this).parent().css('visibility', 'hidden')
-        event.preventDefault()
-        return false
       }
     })
   }) // end document ready

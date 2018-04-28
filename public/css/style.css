@@ -158,6 +158,11 @@ body {
     border: none;
 }
 
+#playback {
+    background: url('../images/gear.png') no-repeat center;
+    background-size: 24px 24px;
+}
+
 #texturing {
     background: url('../images/textureOff.png') no-repeat center;
     background-size: 24px 24px;
