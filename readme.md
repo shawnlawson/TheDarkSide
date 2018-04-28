@@ -20,7 +20,7 @@ Text edits are recorded and then able to be saved, JSON format, and played back 
 ### Publication
 Short paper on this software published at the 3rd [International Conference on Live-Coding](https://iclc.livecodenetwork.org/2017/en/index.html). That paper is here [ShortPaper-TheDarkSide.pdf](http://www.shawnlawson.com/wp-content/uploads/2018/03/ShortPaper-TheDarkSide.pdf)
 
-Lots of testing this out here [https://vimeo.com/manage/albums/4688973](https://vimeo.com/manage/albums/4688973)
+Lots of testing this out here [https://vimeo.com/album/4688973](https://vimeo.com/album/4688973)
 
 # Installation
 
