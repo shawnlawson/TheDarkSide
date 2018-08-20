@@ -5,7 +5,7 @@
 var ws
 window.WebSocket = window.WebSocket || window.MozWebSocket
 // var url = 'ws://' + location.hostname + ':' + 8000;
-var url = 'ws://localhost:8000'
+var url = 'ws://localhost:8002'
 console.log('attempting websocket connection to ' + url)
 ws = new WebSocket(url)
 

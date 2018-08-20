@@ -10,7 +10,7 @@ var debugging = false
 function resizeGL (pixelSize) {
   renderer.setPixelRatio(pixelSize)
   renderer.setSize(window.innerWidth, window.innerHeight)
-
+  
   RTTPing.setSize(window.innerWidth, window.innerHeight)
   RTTPong.setSize(window.innerWidth, window.innerHeight)
 

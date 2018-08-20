@@ -38,7 +38,7 @@ prog
     .option('-w, --webhost <webhost>', 'Use Locahost website', prog.BOOL, true)
     .option('-e, --webport <webport>', 'Set Locahost website port', prog.INT, 8000)
     .option('-s, --websocket <websocket>', 'Use websocket', prog.BOOL, 'true')
-    .option('-k, --websocketport <websocketport>', 'Set websocket port', prog.INT, 8000)
+    .option('-k, --websocketport <websocketport>', 'Set websocket port', prog.INT, 8002)
     .option('-i, --tidal <tidal>', 'Use TidalCycles', prog.BOOL, true)
     .option('-l, --tidalbootfile <tidalbootfile>', 'Set tidalcycles boot file', null, 'ghciSuperDirt')
     .action(function (args, options, logger) {
@@ -88,7 +88,7 @@ prog
         Start up any Web Socket stuff
         *************************/
       if (options.websocket) {
-        WebSocketServer = require('uws').Server
+        WebSocketServer = require('ws').Server
         wss = new WebSocketServer({
           server: server,
           port: options.websocketport
