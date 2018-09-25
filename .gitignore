@@ -65,4 +65,4 @@ typings/
 #extra files
 *.sublime-project
 *.sublime-workspace
-public/js/settings.js
+public/js/config.js

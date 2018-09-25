@@ -167,7 +167,7 @@ editor.commands.addCommand({
   },
   exec: function () {
     audioMessageRef.push({ author: userId, exec: 'execLine', range: editor.session.selection.getRange(), backwards: editor.session.selection.isBackwards() + 0 })
-    editor.runTidal(editor.session.selection.getRange(), 'execLine')
+    editor.runCode(editor.session.selection.getRange(), 'execLine')
   }
 })
 
@@ -179,11 +179,11 @@ editor.commands.addCommand({
   },
   exec: function () {
     audioMessageRef.push({ author: userId, exec: 'execBlock', range: editor.session.selection.getRange(), backwards: editor.session.selection.isBackwards() + 0 })
-    editor.runTidal(editor.session.selection.getRange(), 'execBlock')
+    editor.runCode(editor.session.selection.getRange(), 'execBlock')
   }
 })
 
-editor.runTidal = function (theRange, execType) {
+editor.runCode = function (theRange, execType) {
   var theCode = ''
   var sel = new Range()
   var startExp = /(?:\h?[d][1-8]|\h?hush|\h?let|\h?bps|\v)/ig

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>| | || ||| The Force ||| || | |</title>
+    <title>| The Dark Side |</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
@@ -73,7 +73,6 @@
                 <div>
                     <button id="lw_toolbar_stat" class="lw_toolbar_button">Show Histogram</button>
                     <button id="lw_toolbar_skip" class="lw_toolbar_button">skip inactive parts</button>
-                    <button id="lw_toolbar_setting" class="lw_toolbar_button">settings</button>
                     <button class="lw_toolbar_button livewriting_speed">1 X</button>
                     <button class="lw_toolbar_button lw_toolbar_speed">adjust the speed</button>
                     <div id="lw_playback_slider"></div>
@@ -81,6 +80,23 @@
             </div>
         </div>
     </div>
+
+    <!-- networking UI ================================= -->
+    <div id="networkPanel" title="Firebase Connection">
+        <p>Firebase</p>
+        <input type="submit" id="new_hash" value="New" />
+        <br/><br/>
+        <input type="text" id="firebase_hash" value="-Ke-ob9Bx4oBoKwR867r" />
+        <label for="firebase_hash">Firebase Hash</label>
+        <br/><br/>
+        <input type="text" id="firebase_user" value="firebase email" />
+        <input type="text" id="firebase_pass" value="firebase password" />
+        <br/><br/>
+        <input type="submit" id="connect_to_firebase" value="Connect" />
+        <input type="submit" id="disconnect_to_firebase" value="Disconnect" />        
+        <hr />
+    </div>
+
     <!-- footer UI ================================= -->
     <div id="footer">
         <div id="myFrameRate"></div>
@@ -117,10 +133,11 @@
             <input type="submit" id="playback" value="" class="uiButton" title="Playback Recording"/>
             <input type="checkbox" id="play" value="" />
             <label for="play" class="uiButton" title="Toggle Rendering"></label>
-            
+            <input type="submit" id="network" value="" class="uiButton" title="Hash Panel" />
         </div>
     </div>
 </body>
+<script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript" src="lib/firebase.js"></script>
 <script type="text/javascript" src="lib/jquery.min.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.min.js"></script>
