@@ -3,6 +3,7 @@ var mErrors = new Array()
 var mExecs = new Array()
 var mExecTimer = null
 var mFeedback = false
+var mCode = ''
 
 function setShaderFromEditor () {
   if (headerShader !== null) {
@@ -166,7 +167,9 @@ editor.commands.addCommand({
     mac: 'Shift-Return'
   },
   exec: function () {
-    audioMessageRef.push({ author: userId, exec: 'execLine', range: editor.session.selection.getRange(), backwards: editor.session.selection.isBackwards() + 0 })
+    if (audioMessageRef !== null) {
+      audioMessageRef.push({ author: userId, exec: 'execLine', range: editor.session.selection.getRange(), backwards: editor.session.selection.isBackwards() + 0 })
+    }
     editor.runCode(editor.session.selection.getRange(), 'execLine')
   }
 })
@@ -178,7 +181,9 @@ editor.commands.addCommand({
     mac: 'Command-Return'
   },
   exec: function () {
-    audioMessageRef.push({ author: userId, exec: 'execBlock', range: editor.session.selection.getRange(), backwards: editor.session.selection.isBackwards() + 0 })
+    if (audioMessageRef !== null) {
+      audioMessageRef.push({ author: userId, exec: 'execBlock', range: editor.session.selection.getRange(), backwards: editor.session.selection.isBackwards() + 0 })
+    }
     editor.runCode(editor.session.selection.getRange(), 'execBlock')
   }
 })
@@ -247,6 +252,7 @@ editor.runCode = function (theRange, execType) {
     code: theCode
   }
   console.log(theCode)
+  mCode = theCode
   ws.send(JSON.stringify(msg))
 }
 

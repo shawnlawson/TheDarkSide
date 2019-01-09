@@ -490,7 +490,7 @@ var livewriting = (function ($) {
         return remoteCursorFunc(it)
       })
       it.commands.on('afterExec', function (event) {
-        execAceFunc(event.command.name, it, editor.session.selection.getRange(), mLanguage)
+        execAceFunc(event.command.name, it, editor.session.selection.getRange())
       })
       // END
       it.session.on('changeScrollLeft', function (number) {

@@ -195,7 +195,7 @@ prog
         var sendIt = function () {
           if (options.websocket) {
             try {
-              wss.broadcast(JSON.stringify({
+              wss.send(JSON.stringify({
                 type: 'feedback',
                 message: feedbackToSend
               }))
