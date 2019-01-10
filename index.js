@@ -25,8 +25,19 @@ Start up any Command Line Interface stuff
 *************************/
 
 var prog = require('caporal')
-var createLogger = require('./lib/logger.js').createLogger
-var logger = createLogger()
+const winston = require('winston');
+
+const logger = winston.createLogger({
+  format: winston.format.combine(
+            //color must be first
+            winston.format.colorize(),
+            winston.format.simple()
+          ),
+  transports: [
+    new winston.transports.Console()
+  ]
+});
+
 
 prog
     .version('0.1.0')
