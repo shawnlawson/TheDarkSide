@@ -206,10 +206,10 @@ prog
         var sendIt = function () {
           if (options.websocket) {
             try {
-              wss.send(JSON.stringify({
-                type: 'feedback',
-                message: feedbackToSend
-              }))
+              // wss.send(JSON.stringify({
+              //   type: 'feedback',
+              //   message: feedbackToSend
+              // }))
             } catch (e) {
               logger.error('Web Socket send error: ' + e)
               return

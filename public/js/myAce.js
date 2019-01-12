@@ -14,7 +14,7 @@ function setShaderFromEditor () {
     var rawCode = editor.session.doc.getAllLines()
     var rawCodeLength = rawCode.length
     var cleanCode = ''
-    var startExp = /(?:\h?[d][1-8]|\h?hush|\h?let|\h?bps|\h?import)/ig
+    var startExp = /(?:\h?[d][1-8]|\h?hush|\h?let|\h?setcps|\h?import)/ig
     var i = 0
     while (i < rawCodeLength) {
       var resultStart = startExp.exec(rawCode[i])

@@ -7,26 +7,26 @@ var aCanvas
 /// /////////////////////////////////
 //  WebAudio Contexts
 /// /////////////////////////////////
-var contextAvailable = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext
+// var contextAvailable = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext
 
-if (contextAvailable) {
-  mAudioContext = new contextAvailable()
-  mSound.mAnalyser = mAudioContext.createAnalyser()
-  mSound.mAnalyser.smoothingTimeConstant = 0.5
-  mSound.mAnalyser.fftSize = 1024
-  mSound.mFreqData = new Uint8Array(mSound.mAnalyser.frequencyBinCount)
-  mSound.mWaveData = new Uint8Array(512)
-  mSound.javascriptNode = mAudioContext.createScriptProcessor(1024, 2, 2)
-  mSound.mAnalyser.connect(mSound.javascriptNode)
-  mSound.javascriptNode.connect(mAudioContext.destination)
-  mSound.javascriptNode.onaudioprocess = function () {
-    updateFourBands()
-  }
+// if (contextAvailable) {
+  // mAudioContext = new AudioContext()
+  // mSound.mAnalyser = mAudioContext.createAnalyser()
+  // mSound.mAnalyser.smoothingTimeConstant = 0.5
+  // mSound.mAnalyser.fftSize = 1024
+  // mSound.mFreqData = new Uint8Array(mSound.mAnalyser.frequencyBinCount)
+  // mSound.mWaveData = new Uint8Array(512)
+  // mSound.javascriptNode = mAudioContext.createScriptProcessor(1024, 2, 2)
+  // mSound.mAnalyser.connect(mSound.javascriptNode)
+  // mSound.javascriptNode.connect(mAudioContext.destination)
+  // mSound.javascriptNode.onaudioprocess = function () {
+  //   updateFourBands()
+  // }
 
-  bandsOn = false
-} else {
-  alert("This browser doesn't support Audio Contexts. Audio input will not be available.")
-}
+  // bandsOn = false
+// } else {
+//   alert("This browser doesn't support Audio Contexts. Audio input will not be available.")
+// }
 
 function webAudioCleanup () {
   if (mSound.mStream) { // clean up any user media stream
@@ -38,23 +38,23 @@ function webAudioCleanup () {
 /// /////////////////////////////////
 //  Browser GetUserMedia
 /// /////////////////////////////////
-if (navigator.mediaDevices === undefined) {
-  navigator.mediaDevices = {}
-}
+// if (navigator.mediaDevices === undefined) {
+//   navigator.mediaDevices = {}
+// }
 
-if (navigator.mediaDevices.getUserMedia === undefined) {
-  navigator.mediaDevices.getUserMedia = function (constraints) {
-    var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia)
+// if (navigator.mediaDevices.getUserMedia === undefined) {
+//   navigator.mediaDevices.getUserMedia = function (constraints) {
+//     var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia)
 
-    if (!getUserMedia) {
-      return Promise.reject(new Error('getUserMedia is not implemented in this browser'))
-    }
+//     if (!getUserMedia) {
+//       return Promise.reject(new Error('getUserMedia is not implemented in this browser'))
+//     }
 
-    return new Promise(function (resolve, reject) {
-      getUserMedia.call(navigator, constraints, resolve, reject)
-    })
-  }
-}
+//     return new Promise(function (resolve, reject) {
+//       getUserMedia.call(navigator, constraints, resolve, reject)
+//     })
+//   }
+// }
 
 function createAudioElement (urls, exts, name) {
   var audioElement = document.createElement('audio')

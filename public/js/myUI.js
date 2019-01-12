@@ -126,6 +126,18 @@ $(document)
 
                 navigator.mediaDevices.getUserMedia(audioConstraint)
                     .then(function(stream) {
+                        mAudioContext = new AudioContext()
+                          mSound.mAnalyser = mAudioContext.createAnalyser()
+                          mSound.mAnalyser.smoothingTimeConstant = 0.5
+                          mSound.mAnalyser.fftSize = 1024
+                          mSound.mFreqData = new Uint8Array(mSound.mAnalyser.frequencyBinCount)
+                          mSound.mWaveData = new Uint8Array(512)
+                          mSound.javascriptNode = mAudioContext.createScriptProcessor(1024, 2, 2)
+                          mSound.mAnalyser.connect(mSound.javascriptNode)
+                          mSound.javascriptNode.connect(mAudioContext.destination)
+                          mSound.javascriptNode.onaudioprocess = function () {
+                            updateFourBands()
+                          }
                         mSound.mStream = stream
                         mSound.mSource = mAudioContext.createMediaStreamSource(stream)
                         mSound.mSource.disconnect()
