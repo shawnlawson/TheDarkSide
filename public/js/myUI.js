@@ -265,6 +265,12 @@ $(document)
                 });
             })
 
+        $('#websocket_reconnect')
+            .button()
+            .click(function(event) {
+               ws = new WebSocket(url)
+            })
+
         $('#openFile')
             .button()
             .click(function(event) { // to hide the other file button interface from users
